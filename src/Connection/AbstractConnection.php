@@ -183,7 +183,7 @@ abstract class AbstractConnection implements ConnectionInterface
     protected function disarmTimeoutMonitor()
     {
         if (isset($this->timeout)) {
-            $this->timeout->cancel();
+	        $this->loop->cancelTimer($this->timeout);
             $this->timeout = null;
         }
     }
